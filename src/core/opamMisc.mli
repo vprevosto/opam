@@ -187,6 +187,13 @@ val sub_at: int -> string -> string
 (** Remove from a ':' separated list of string the one with the given prefix *)
 val reset_env_value: prefix:string -> string -> string list
 
+(** split a ':' separated list of string in two according to the first
+    occurrences of the string with the given [prefix]. The list of
+    elements occurring before is returned in reverse order. If there are
+    other elements with the same [prefix] they are kept in the second list.
+ *)
+val cut_env_value: prefix:string -> string -> string list * string list
+
 (** if rsync -arv return 4 lines, this means that no files have changed *)
 val rsync_trim: string list -> string list
 
